@@ -2,7 +2,6 @@ import Http from "./Http";
 import express, { Request, Response } from "express";
 import AuthToken from "../../util/middleware/authenticateToken";
 import bodyParser from 'body-parser';
-import fileupload from "express-fileupload";
 
 export default class ExpressAdapter implements Http {
 	app: any;
@@ -20,14 +19,7 @@ export default class ExpressAdapter implements Http {
 		this.app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 		this.app.use(bodyParser.json({ limit: 10 * 1024 * 1024 }));
 		this.app.use(bodyParser.raw({ limit: 10 * 1024 * 1024 }));
-		//UPLOAD FILE
-		this.app.use(
-			fileupload({
-				useTempFiles: true,
-				tempFileDir: './uploads/',
-				limits: { fileSize: 300 * 1024 * 1024 }
-			})
-		);
+	
 
 		this.app.use( function (req: any, res: any, next: any) {
 			return next();
