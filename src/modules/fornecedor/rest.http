@@ -1,0 +1,92 @@
+@baseUrl = http://localhost:3000/api/v1
+@baseUrlApi = http://localhost:3001/api/v1
+@token = 
+
+###
+POST {{baseUrlApi}}/auth/login HTTP/1.1
+content-type: application/json
+
+{
+	"username": "",
+	"password": "",
+	"system": ""
+}
+
+### CREATE
+POST {{baseUrl}}/fornecedor HTTP/1.1
+Authorization: {{token}}
+content-type: application/json
+
+{
+    "cnpj": "12345678912114",
+	"nome_fantasia": "NOME FANTASIA DA EMPRESA",
+	"razao_social": "RAZAO SOCIAL DA EMPRESA",
+	"endereco_cep": "49000000",
+	"endereco_rua": "RUA",
+	"endereco_numero": "312",
+	"endereco_complemento": "CASA",
+	"endereco_bairro": "SANTOS",
+	"endereco_cidade": "SAO PAULO",
+	"endereco_estado": "SAO PAULO",
+	"contato_email": "email@email.com",
+	"contato_telefone": "79999999999"
+}
+
+
+### GET
+GET {{baseUrl}}/fornecedor/35154710-2e39-5cab-97a5-f3d36a54bb1b HTTP/1.1
+Authorization: {{token}}
+
+
+### UPDATE
+POST {{baseUrl}}/fornecedor/update HTTP/1.1
+Authorization: {{token}}
+content-type: application/json
+
+{
+	"id": "35154710-2e39-5cab-97a5-f3d36a54bb1b",
+    "cnpj": "12345678912114",
+	"nome_fantasia": "NOME FANTASIA DA EMPRESA",
+	"razao_social": "RAZAO SOCIAL DA EMPRESA",
+	"endereco_cep": "49000000",
+	"endereco_rua": "RUA",
+	"endereco_numero": "312",
+	"endereco_complemento": "CASA",
+	"endereco_bairro": "SANTOS",
+	"endereco_cidade": "SAO PAULO",
+	"endereco_estado": "SAO PAULO",
+	"contato_email": "email@email.com",
+	"contato_telefone": "79999999999"
+}
+
+
+
+### DISABLE
+POST {{baseUrl}}/fornecedor/delete HTTP/1.1
+Authorization: {{token}}
+content-type: application/json
+
+{
+	"id": "35154710-2e39-5cab-97a5-f3d36a54bb1b"
+}
+
+
+
+### ENABLE
+POST {{baseUrl}}/fornecedor/enable HTTP/1.1
+Authorization: {{token}}
+content-type: application/json
+
+{
+	"id": "35154710-2e39-5cab-97a5-f3d36a54bb1b"
+}
+
+
+### LIST
+GET {{baseUrl}}/fornecedor/list/1/10 HTTP/1.1
+Authorization: {{token}}
+
+
+### LIST
+GET {{baseUrl}}/fornecedor/listAll/1/10 HTTP/1.1
+Authorization: {{token}}

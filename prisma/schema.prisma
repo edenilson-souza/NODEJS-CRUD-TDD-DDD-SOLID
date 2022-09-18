@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+//generator erd {
+//  provider                  = "prisma-erd-generator"
+//  theme                     = "neutral"
+//  tableOnly                 = false
+//  includeRelationFromFields = true
+//  disableERD                = true
+//}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Fornecedor {
+  id                   String   @id @default(uuid())
+  cpf                  String?
+  cnpj                 String?
+  nome_fantasia        String?
+  razao_social         String?
+  endereco_cep         String?
+  endereco_rua         String?
+  endereco_numero      String?
+  endereco_complemento String?
+  endereco_bairro      String?
+  endereco_cidade      String?
+  endereco_estado      String?
+  contato_email        String?
+  contato_telefone     String?
+  contato_telefone_2   String?
+  create_at            DateTime @default(now())
+  update_at            DateTime @updatedAt
+  active               Boolean  @default(true)
+
+  @@map("fornecedores")
+}
